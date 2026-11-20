@@ -1,36 +1,32 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ShipYard
 
-## Getting Started
+A small product-catalog storefront built with **Next.js (App Router) + TypeScript**.
 
-First, run the development server:
+- `/` – responsive grid of products (`app/page.tsx`)
+- `/products/[id]` – statically pre-built detail page per product (`app/products/[id]/page.tsx`)
+- Unknown ids (e.g. `/products/nope`) show a friendly 404 (`app/not-found.tsx`)
+
+## Structure
+
+| File | Purpose |
+| --- | --- |
+| `app/data/products.ts` | `Product` type, typed `products` array, `getProduct(id)` helper |
+| `app/components/ProductCard.tsx` | Reusable card, takes a typed `product` prop, links to its detail page |
+| `app/page.tsx` | Maps products into a CSS grid (`repeat(auto-fill, minmax(240px, 1fr))`) |
+| `app/products/[id]/page.tsx` | Dynamic route with `generateStaticParams` and `notFound()` |
+| `app/not-found.tsx` | Friendly 404 page |
+
+## Performance (Part 2)
+
+- **Images:** each product has a real image in `public/products/`, rendered with `next/image` (width/height on cards, `fill` in a sized parent on the detail page) and an `alt`. First-row cards and the detail hero use `preload`; the rest lazy-load. No layout shift.
+- **Fonts:** Geist is loaded once with `next/font/google` in `app/layout.tsx` and applied with `className`. It is self-hosted, so there is no Google Fonts `<link>`.
+- **Lazy loading:** the below-the-fold Reviews panel (`app/products/[id]/Reviews.tsx`, which uses `localStorage`) is loaded with `next/dynamic` and `{ ssr: false }` from the client wrapper `LazyReviews.tsx`, with a skeleton fallback.
+- **Metadata:** the layout sets a `%s | ShipYard` title template, the home page exports `metadata`, and the product route uses `generateMetadata` for each product's title, description and Open Graph image.
+
+## Run locally
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev     # http://localhost:3000
+npm run build   # production build
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
