@@ -2,18 +2,39 @@
 
 A small product-catalog storefront built with **Next.js (App Router) + TypeScript**, statically exported and deployed to GitHub Pages.
 
-**Live site:** https://mehtabsingh1.github.io/shipyard/
+- **Live site:** https://mehtabsingh1.github.io/shipyard/
+- **Repository (public):** https://github.com/MEHTABSINGH1/shipyard
 
 ## Lighthouse (Mobile)
 
-| Page | Performance | Accessibility | Best Practices | SEO |
-| --- | --- | --- | --- | --- |
-| Home `/` | **99** | 100 | 100 | 100 |
-| Product `/products/wave-runner/` | **99** | 100 | 100 | 100 |
+| Page | Performance | Accessibility | Best Practices | SEO | Full report |
+| --- | --- | --- | --- | --- | --- |
+| Home `/` | **99** | 100 | 100 | 100 | [HTML report](https://mehtabsingh1.github.io/shipyard/lighthouse/home.html) · [Lighthouse Viewer](https://googlechrome.github.io/lighthouse/viewer/?jsonurl=https%3A%2F%2Fraw.githubusercontent.com%2FMEHTABSINGH1%2Fshipyard%2Ffeature%2Fdeploy%2Fdocs%2Flighthouse%2Fhome.json) |
+| Product `/products/wave-runner/` | **99** | 100 | 100 | 100 | [HTML report](https://mehtabsingh1.github.io/shipyard/lighthouse/product.html) · [Lighthouse Viewer](https://googlechrome.github.io/lighthouse/viewer/?jsonurl=https%3A%2F%2Fraw.githubusercontent.com%2FMEHTABSINGH1%2Fshipyard%2Ffeature%2Fdeploy%2Fdocs%2Flighthouse%2Fproduct.json) |
 
-Measured on the live GitHub Pages site with Lighthouse 12 (mobile preset). Home: FCP 1.0 s, LCP 2.2 s, TBT 40 ms, CLS 0. The first local measurement of the build scored 83, mainly because the test server sent uncompressed JS; see the performance notes below.
+Run against the **live GitHub Pages URL** with Lighthouse 12.8.2, **mobile** form factor (Emulated Moto G Power, Slow 4G throttling), on 20 Nov 2026.
+- **Home:** FCP 1.1 s, LCP 2.3 s, TBT 60 ms, CLS 0.
+- **Product:** FCP 0.8 s, LCP 2.0 s, TBT 50 ms, CLS 0.
 
-![Lighthouse mobile report](docs/lighthouse-mobile.png)
+The raw JSON results are in [`docs/lighthouse/`](docs/lighthouse/). To re-run it yourself, use [PageSpeed Insights (mobile)](https://pagespeed.web.dev/analysis?url=https%3A%2F%2Fmehtabsingh1.github.io%2Fshipyard%2F&form_factor=mobile).
+
+The first measurement, on a local server without compression, scored 83. See the performance notes below.
+
+| Home | Product detail |
+| --- | --- |
+| ![Lighthouse mobile report: home, Performance 99](docs/lighthouse-mobile.png) | ![Lighthouse mobile report: product page, Performance 99](docs/lighthouse-mobile-product.png) |
+
+## Live routes (verified)
+
+| Route | Expected | Result |
+| --- | --- | --- |
+| [/shipyard/](https://mehtabsingh1.github.io/shipyard/) | Product grid, 8 cards with images | 200 ✅ |
+| [/shipyard/products/wave-runner/](https://mehtabsingh1.github.io/shipyard/products/wave-runner/) | Product detail + lazy-loaded reviews | 200 ✅ |
+| [/shipyard/products/dry-bag/](https://mehtabsingh1.github.io/shipyard/products/dry-bag/) | Another statically built product | 200 ✅ |
+| [/shipyard/products/nope/](https://mehtabsingh1.github.io/shipyard/products/nope/) | Friendly "Lost at sea" 404 | 404 ✅ |
+| [/shipyard/products/wave-runner.webp](https://mehtabsingh1.github.io/shipyard/products/wave-runner.webp) | Product image under basePath | 200 ✅ |
+
+![Live site: home grid, product detail and 404 page](docs/live-routes.png)
 
 ## Routes
 
