@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { formatPrice, getProduct, products } from "../../data/products";
@@ -35,8 +36,15 @@ export default async function ProductPage({ params }: ProductPageProps) {
       </Link>
 
       <article className="detail">
-        <div className="detail-image" aria-hidden="true">
-          {product.emoji}
+        {/* fill inside a sized, position:relative parent reserves the space */}
+        <div className="detail-image">
+          <Image
+            src={product.image}
+            alt={product.imageAlt}
+            fill
+            sizes="(max-width: 700px) 100vw, 540px"
+            preload
+          />
         </div>
 
         <div className="detail-info">

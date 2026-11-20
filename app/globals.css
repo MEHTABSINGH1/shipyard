@@ -116,11 +116,13 @@ a {
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
 }
 
+/* width/height attributes on next/image reserve a 4:3 box, so no layout shift */
 .card-image {
-  display: grid;
-  place-items: center;
-  font-size: 4rem;
-  height: 160px;
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
   background: var(--accent-soft);
 }
 
@@ -196,13 +198,18 @@ a {
   padding: 24px;
 }
 
+/* Sized, positioned parent for <Image fill> */
 .detail-image {
-  display: grid;
-  place-items: center;
-  font-size: 8rem;
-  min-height: 280px;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
   border-radius: var(--radius);
+  overflow: hidden;
   background: var(--accent-soft);
+}
+
+.detail-image img {
+  object-fit: cover;
 }
 
 .detail-info {

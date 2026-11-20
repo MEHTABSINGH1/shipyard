@@ -7,7 +7,8 @@ export type Product = {
   category: Category;
   tagline: string;
   description: string;
-  emoji: string;
+  image: string; // path under /public, e.g. /products/wave-runner.webp
+  imageAlt: string;
   rating: number; // 0–5
   inStock: boolean;
 };
@@ -21,7 +22,8 @@ export const products: Product[] = [
     tagline: "A nimble shortboard for fast, punchy waves.",
     description:
       "Built from a lightweight epoxy core, the Wave Runner snaps through tight turns and holds its line on steep faces. Ideal for intermediate to advanced surfers.",
-    emoji: "🏄",
+    image: "/products/wave-runner.webp",
+    imageAlt: "Wave Runner product illustration on a coloured background",
     rating: 4.7,
     inStock: true,
   },
@@ -33,7 +35,8 @@ export const products: Product[] = [
     tagline: "Heavyweight cotton for cold dock mornings.",
     description:
       "A brushed-fleece hoodie with a double-lined hood and kangaroo pocket. Pre-shrunk organic cotton keeps its shape wash after wash.",
-    emoji: "🧥",
+    image: "/products/harbor-hoodie.webp",
+    imageAlt: "Harbor Hoodie product illustration on a coloured background",
     rating: 4.5,
     inStock: true,
   },
@@ -45,7 +48,8 @@ export const products: Product[] = [
     tagline: "Keeps drinks cold for 24 hours.",
     description:
       "Double-walled stainless steel with a leak-proof lid. Fits standard cup holders and survives drops onto the deck.",
-    emoji: "🧴",
+    image: "/products/anchor-bottle.webp",
+    imageAlt: "Anchor Bottle product illustration on a coloured background",
     rating: 4.8,
     inStock: true,
   },
@@ -57,7 +61,8 @@ export const products: Product[] = [
     tagline: "Live tide charts on your wrist.",
     description:
       "Water-resistant to 100 m with built-in tide tables for over 3,000 beaches, a moon-phase dial and a two-week battery.",
-    emoji: "⌚",
+    image: "/products/tide-watch.webp",
+    imageAlt: "Tide Watch product illustration on a coloured background",
     rating: 4.4,
     inStock: false,
   },
@@ -69,7 +74,8 @@ export const products: Product[] = [
     tagline: "Sun-faded canvas with a curved brim.",
     description:
       "Washed cotton canvas cap with an adjustable brass buckle strap. Gets better looking the more salt and sun it sees.",
-    emoji: "🧢",
+    image: "/products/sailor-cap.webp",
+    imageAlt: "Sailor Cap product illustration on a coloured background",
     rating: 4.2,
     inStock: true,
   },
@@ -81,7 +87,8 @@ export const products: Product[] = [
     tagline: "Rechargeable light for night watches.",
     description:
       "A warm 300-lumen LED lantern with three brightness modes, USB-C charging and a hanging hook. Runs 40 hours on low.",
-    emoji: "🏮",
+    image: "/products/deck-lantern.webp",
+    imageAlt: "Deck Lantern product illustration on a coloured background",
     rating: 4.6,
     inStock: true,
   },
@@ -93,7 +100,8 @@ export const products: Product[] = [
     tagline: "Never lose your bearings (or your keys).",
     description:
       "A working liquid-filled brass compass on a sturdy split ring. A small gift for anyone who loves the open water.",
-    emoji: "🧭",
+    image: "/products/compass-key.webp",
+    imageAlt: "Compass Keyring product illustration on a coloured background",
     rating: 4.3,
     inStock: true,
   },
@@ -105,7 +113,8 @@ export const products: Product[] = [
     tagline: "Roll-top waterproof bag for kayak trips.",
     description:
       "Welded-seam PVC tarpaulin with a roll-top closure and shoulder strap. Floats when sealed and keeps gear bone dry.",
-    emoji: "🎒",
+    image: "/products/dry-bag.webp",
+    imageAlt: "Dry Bag 20L product illustration on a coloured background",
     rating: 4.5,
     inStock: true,
   },

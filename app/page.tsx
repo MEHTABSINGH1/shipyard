@@ -1,5 +1,15 @@
+import type { Metadata } from "next";
 import ProductCard from "./components/ProductCard";
 import { products } from "./data/products";
+
+export const metadata: Metadata = {
+  title: { absolute: "ShipYard | Gear for life by the water" },
+  description:
+    "Browse ShipYard's catalog of surfboards, apparel and sailing gear: boards, hoodies, lanterns, dry bags and more.",
+};
+
+// The first row of cards is visible on first paint, so preload those images.
+const ABOVE_THE_FOLD = 3;
 
 export default function Home() {
   return (
@@ -10,8 +20,12 @@ export default function Home() {
       </section>
 
       <section className="grid" aria-label="Products">
-        {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
+        {products.map((product, index) => (
+          <ProductCard
+            key={product.id}
+            product={product}
+            preload={index < ABOVE_THE_FOLD}
+          />
         ))}
       </section>
     </main>
