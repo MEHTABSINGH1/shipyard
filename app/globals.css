@@ -452,3 +452,30 @@ a {
 @media (prefers-reduced-motion: reduce) {
   .skeleton-line { animation: none; }
 }
+
+/* Loading + error states */
+.skeleton-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.skeleton-block {
+  background: var(--accent-soft);
+}
+
+.skeleton-card .card-body {
+  gap: 10px;
+}
+
+.error-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+}
+
+.error-actions .button {
+  margin-top: 0;
+}
