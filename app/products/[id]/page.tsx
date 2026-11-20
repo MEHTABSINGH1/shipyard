@@ -12,9 +12,6 @@ export function generateStaticParams() {
   return products.map((product) => ({ id: product.id }));
 }
 
-// Only the ids above exist; anything else is a 404.
-export const dynamicParams = false;
-
 export async function generateMetadata({
   params,
 }: ProductPageProps): Promise<Metadata> {
