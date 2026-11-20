@@ -8,10 +8,10 @@ A small product-catalog storefront built with **Next.js (App Router) + TypeScrip
 
 | Page | Performance | Accessibility | Best Practices | SEO |
 | --- | --- | --- | --- | --- |
-| Home `/` | **97** | 100 | 100 | 100 |
-| Product `/products/wave-runner/` | **97** | 100 | 100 | 100 |
+| Home `/` | **99** | 100 | 100 | 100 |
+| Product `/products/wave-runner/` | **99** | 100 | 100 | 100 |
 
-Measured on the production build (`npm run build`, served with gzip like GitHub Pages), Lighthouse 12 mobile preset. Key metrics: FCP 0.8 s, LCP 2.4–2.6 s, TBT 40–90 ms, CLS 0.
+Measured on the live GitHub Pages site with Lighthouse 12 (mobile preset). Home: FCP 1.0 s, LCP 2.2 s, TBT 40 ms, CLS 0. The first local measurement of the build scored 83, mainly because the test server sent uncompressed JS; see the performance notes below.
 
 ![Lighthouse mobile report](docs/lighthouse-mobile.png)
 
