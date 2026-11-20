@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { formatPrice, getProduct, products } from "../../data/products";
 import { getReviews } from "../../data/reviews";
+import { withBasePath } from "../../lib/site";
 import LazyReviews from "./LazyReviews";
 
 type ProductPageProps = {
@@ -33,7 +34,7 @@ export async function generateMetadata({
     openGraph: {
       title: product.name,
       description,
-      images: [{ url: product.image, width: 800, height: 600, alt: product.imageAlt }],
+      images: [{ url: withBasePath(product.image), width: 800, height: 600, alt: product.imageAlt }],
     },
   };
 }
@@ -56,7 +57,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
         {/* fill inside a sized, position:relative parent reserves the space */}
         <div className="detail-image">
           <Image
-            src={product.image}
+            src={withBasePath(product.image)}
             alt={product.imageAlt}
             fill
             sizes="(max-width: 700px) 100vw, 540px"

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { SITE_ORIGIN } from "./lib/site";
 
 // next/font downloads these at build time and self-hosts them,
 // so there is no request to fonts.googleapis.com and no layout shift.
@@ -18,6 +19,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_ORIGIN),
   title: {
     default: "ShipYard",
     template: "%s | ShipYard",

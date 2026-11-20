@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Product } from "../data/products";
 import { formatPrice } from "../data/products";
+import { withBasePath } from "../lib/site";
 
 type ProductCardProps = {
   product: Product;
@@ -14,7 +15,7 @@ export default function ProductCard({ product, preload = false }: ProductCardPro
     <Link href={`/products/${product.id}`} className="card">
       <Image
         className="card-image"
-        src={product.image}
+        src={withBasePath(product.image)}
         alt={product.imageAlt}
         width={800}
         height={600}
