@@ -20,7 +20,22 @@ export async function generateMetadata({
 }: ProductPageProps): Promise<Metadata> {
   const { id } = await params;
   const product = getProduct(id);
-  return { title: product ? `${product.name} | ShipYard` : "Not found | ShipYard" };
+
+  if (!product) {
+    return { title: "Product not found" };
+  }
+
+  // The layout's title template turns this into "<name> | ShipYard".
+  const description = `${product.tagline} ${formatPrice(product.price)} at ShipYard.`;
+  return {
+    title: product.name,
+    description,
+    openGraph: {
+      title: product.name,
+      description,
+      images: [{ url: product.image, width: 800, height: 600, alt: product.imageAlt }],
+    },
+  };
 }
 
 export default async function ProductPage({ params }: ProductPageProps) {
