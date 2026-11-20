@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { formatPrice, getProduct, products } from "../../data/products";
+import { getReviews } from "../../data/reviews";
+import LazyReviews from "./LazyReviews";
 
 type ProductPageProps = {
   params: Promise<{ id: string }>;
@@ -64,6 +66,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
           </button>
         </div>
       </article>
+
+      <LazyReviews productId={product.id} initialReviews={getReviews(product.id)} />
     </main>
   );
 }
